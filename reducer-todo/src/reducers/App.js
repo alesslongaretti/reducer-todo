@@ -4,7 +4,7 @@ export const initialState = {
   id: 3892987589
 };
 
-export const titleReducer = (state, action) => {
+export const listReducer = (state, action) => {
   switch (action.type) {
     case "TOGGLE_EDITING":
       return {
