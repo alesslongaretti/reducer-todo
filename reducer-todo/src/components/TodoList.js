@@ -8,6 +8,11 @@ const TodoList = () => {
 
   const [newList, setNewList] = useState("");
 
+  const toggleCompleted = id => {
+    dispatch({ type: "TOGGLE", id:id });
+
+}
+
   const handleChanges = e => {
     setNewList(e.target.value);
   };
@@ -16,6 +21,8 @@ const TodoList = () => {
     dispatch({ type: "ADD", payload: newList });
     e.preventDefault();
   };
+
+ 
 
   return (
     <div>
@@ -27,10 +34,13 @@ const TodoList = () => {
           value={newList}
         />
         <button>add</button>
+        
         {state.map(item => (
-          <Title key={item.id} item={item} />
+          <Title key={item.id} item={item} toggleCompleted={toggleCompleted}/>
         ))}
+        
       </form>
+        
     </div>
   );
 };

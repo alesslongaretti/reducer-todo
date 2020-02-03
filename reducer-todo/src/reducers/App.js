@@ -13,6 +13,9 @@ export const listReducer = (state, action) => {
         ...state,
         { title: action.payload, completed: false, id: Date.now() }
       ];
+      case "TOGGLE":
+        return state.map(item => 
+          item.id === action.id ? { ...item, completed: !item.completed} : item)
     default:
       return state;
   }
