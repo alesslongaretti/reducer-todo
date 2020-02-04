@@ -29,21 +29,36 @@ const TodoList = () => {
 
   return (
     <div>
-      <form onSubmit={handleUpdateTitle}>
-        <input
-          onChange={handleChanges}
-          type="text"
-          name="item"
-          value={newList}
-        />
-        <button>add</button>
+      <header>
+        <h1> To do List</h1>
+      </header>
+      <div>
+        <form onSubmit={handleUpdateTitle}>
+          <div className="Add-task">
+            <input className="input-task"
+              onChange={handleChanges}
+              type="text"
+              name="item"
+              placeholder="New Task"
+              value={newList}
+            />
+            <button className="add-button">ADD</button>
+          </div>
+          <div className="todo-list">
+            <div className="list">
+            {state.map(item => (
+              <Title
+                key={item.id}
+                item={item}
+                toggleCompleted={toggleCompleted}
+              />
+            ))}
+            </div>
 
-        {state.map(item => (
-          <Title key={item.id} item={item} toggleCompleted={toggleCompleted} />
-        ))}
-
-        <button onClick={clearChanges}> Clear </button>
-      </form>
+            <button className="clear-button" onClick={clearChanges}> Clear Completed Task </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
